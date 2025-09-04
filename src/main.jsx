@@ -11,6 +11,7 @@ import SignInPage from './auth/sign-in/index.jsx'
 import Home from './home/index.jsx';
 import DashBoard from './dashboard/index.jsx'
 import { ClerkProvider } from '@clerk/clerk-react';
+import EditResume from './dashboard/resume/[resumeId]/edit';
 
 
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter(
       {
         path :'/dashboard' ,
         element : <DashBoard />
+      },
+      {
+        path : '/dashboard/resume/:resumeId/edit' ,
+        element : <EditResume />
       }
     ]
   } ,
