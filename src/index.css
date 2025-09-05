@@ -3,6 +3,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.rsw-ce ul {
+    list-style: disc;
+    padding-left: 2em;
+  }
+  
+  .rsw-ce ol {
+    list-style: decimal;
+    padding-left: 2em;
+  }
+
+  ol, ul, menu {
+    list-style: disc;
+    margin: 0;
+    padding: 0;
+}
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
