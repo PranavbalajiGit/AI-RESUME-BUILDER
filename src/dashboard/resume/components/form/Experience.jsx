@@ -3,6 +3,10 @@ import { Input } from '@/components/ui/input'
 import React, { useContext, useEffect, useState } from 'react'
 import RichTextEditor from '../RichTextEditor'
 import { ResumeInfoContext } from '@/context/ResumeInfoContext'
+import { useParams } from 'react-router-dom'
+import { LoaderCircle } from 'lucide-react'
+import GlobalApi from './../../../../../service/GlobalApi'
+import { toast } from 'sonner'
 
 const formField = {
     title :'',
@@ -15,11 +19,16 @@ const formField = {
 }
 
 function Experience() {
-    const [experienceList , setExperienceList] =  useState([
-        formField
-    ]);
+    const [experienceList , setExperienceList] =  useState([]);
+
+    const params=useParams();
+    const [loading,setLoading]=useState(false);
 
     const {resumeInfo , setResumeInfo} = useContext(ResumeInfoContext);
+
+    useEffect(()=>{
+        resumeInfo?.experience.length>0&&setExperienceList(resumeInfo?.experience)
+    },[])
 
     const handleChange = (index , event) => {
         const newEntries = experienceList.slice();
@@ -29,7 +38,16 @@ function Experience() {
     }
 
     const AddNewExperience = () => {
-        setExperienceList([...experienceList,formField])
+        setExperienceList([...experienceList,{
+            title:'',
+            companyName:'',
+            city:'',
+            state:'',
+            startDate:'',
+            endDate:'',
+            workSummery:'',
+        }])
+
     }
 
     const RemoveExperience = () => {
@@ -55,6 +73,32 @@ function Experience() {
             experience:experienceList
         })
     },[experienceList])
+
+    const onSave = () => {
+            setLoading(true);
+
+            const data = {
+                data: {
+                    experience: experienceList.map(({ id, currentlyWorking, ...rest }) => rest) // drop frontend id
+                }
+            };
+
+            console.log("Payload sent:", data);
+
+            GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
+                (res) => {
+                    console.log(res);
+                    setLoading(false);
+                    toast("Details updated!");
+                },
+                (error) => {
+                    console.error(error.response?.data || error.message);
+                    setLoading(false);
+                }
+            );
+        };
+
+
 
     return (
         <div>
@@ -119,6 +163,7 @@ function Experience() {
                                     {/* Work Summary */}
                                     <RichTextEditor  
                                         index={index} 
+                                        defaultValue={item?.workSummery}
                                         onRichTextEditorChange={(event) => handleRichTextEditor(event , 'workSummery' , index)} 
                                     />
                                 </div>
@@ -131,7 +176,9 @@ function Experience() {
                         <Button variant='outline' onClick={AddNewExperience} className='text-primary'> + Add More Experience</Button>
                         <Button variant='outline' onClick={RemoveExperience} className='text-primary'> - Remove</Button>
                     </div>
-                    <Button> Save </Button>
+                    <Button disabled={loading} onClick={()=>onSave()}>
+                        {loading?<LoaderCircle className='animate-spin' />:'Save'}    
+                    </Button>
                 </div>
             </div>
         </div>

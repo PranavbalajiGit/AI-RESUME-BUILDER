@@ -123,7 +123,8 @@ function Summery({ enableNext }) {
           <Textarea
             className="mt-5"
             required
-            value={summery || ""} // Add this line to bind the state to textarea
+            value={summery} // Add this line to bind the state to textarea
+            defaultValue={summery?summery:resumeInfo?.summery}
             onChange={(e) => setSummery(e.target.value)}
             placeholder="Enter your summary here or click on AI suggestions below..."
           />

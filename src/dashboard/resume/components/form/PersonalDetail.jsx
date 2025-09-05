@@ -47,7 +47,7 @@ function PersonalDetail({enableNext}) {
                 enableNext(true);
                 setLoading(false);
                 toast("Details Updated");
-        },(error) => {
+        },() => {
             setLoading(false);
         })
     }
@@ -87,7 +87,7 @@ function PersonalDetail({enableNext}) {
 
             <div className='mt-3 flex justify-end'>
                 <Button type="submit" 
-                disabled = {loading}> 
+                disabled = {loading} > 
                 {loading ? <LoaderCircle className='animate-spin' /> : 'Save' }
                 </Button>
             </div>
