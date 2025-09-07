@@ -33,7 +33,8 @@ function AddResume() {
         title : resumeTitle,
         resumeId : uuid,
         userEmail : user?.primaryEmailAddress?.emailAddress,
-        userName : user?.fullName
+        userName : user?.fullName,
+        themeColor : '#ff6666'
       }
     }
     GlobalApi.CreateNewResume(data).then(resp => {

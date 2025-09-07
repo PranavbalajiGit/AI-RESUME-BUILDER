@@ -31,8 +31,7 @@ function DashBoard() {
           <ResumeCardItem resume={resume} key={index} refreshData={GetResumeList} />
         )):
         [1,2,3,4].map((item,index)=>(
-          // eslint-disable-next-line react/jsx-key
-          <div className='h-[280px] rounded-lg bg-slate-200 animate-pulse'>
+          <div key={index} className='h-[280px] rounded-lg bg-slate-200 animate-pulse'>
           </div>
         ))
         }

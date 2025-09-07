@@ -21,7 +21,7 @@ function ThemeColor() {
     ]
 
     const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext);
-    const [selectedColor,setSelectedColor]=useState();
+    const [selectedColor,setSelectedColor]=useState(resumeInfo?.themeColor || null);
     const {resumeId}=useParams();
     const onColorSelect=(color)=>{
         setSelectedColor(color)
@@ -43,14 +43,15 @@ function ThemeColor() {
   return (
     <Popover>
         <PopoverTrigger asChild>
-        <Button variant="outline" size="sm" 
+        <Button variant="outline" size="sm"
                 className="flex gap-2" > <LayoutGrid/> Theme</Button>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent className="w-64 z-[9999]">
             <h2 className='mb-2 text-sm font-bold'>Select Theme Color</h2>
             <div className='grid grid-cols-5 gap-3'>
                 {colors.map((item,index)=>(
-                    <div 
+                    <div
+                    key={index}
                     onClick={()=>onColorSelect(item)}
                     className={`h-5 w-5 rounded-full cursor-pointer
                     hover:border-black border
