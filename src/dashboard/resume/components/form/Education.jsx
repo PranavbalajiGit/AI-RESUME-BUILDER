@@ -89,27 +89,39 @@ function Education() {
                             <div className='grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg'>
                                 <div className='col-span-2'>
                                     <label> University Name </label>
-                                    <Input name = 'universityName' onChange = {(e) => handleChange(e , index)} defaultValue={item?.universityName}/>
+                                    <Input name = 'universityName' 
+                                    onChange = {(e) => handleChange(e , index)} 
+                                    defaultValue={item?.universityName}/>
                                 </div>
                                 <div>
                                     <label> Degree </label>
-                                    <Input name = 'degree' onChange = {(e) => handleChange(e , index)} defaultValue={item?.degree}/>
+                                    <Input name = 'degree' 
+                                    onChange = {(e) => handleChange(e , index)} 
+                                    defaultValue={item?.degree}/>
                                 </div>
                                 <div>
                                     <label> Major </label>
-                                    <Input name = 'major' onChange = {(e) => handleChange(e , index)} defaultValue={item?.major}/>
+                                    <Input name = 'major' 
+                                    onChange = {(e) => handleChange(e , index)} 
+                                    defaultValue={item?.major}/>
                                 </div>
                                 <div>
                                     <label> Start Date </label>
-                                    <Input type='date' name = 'startDate' onChange = {(e) => handleChange(e , index)} defaultValue={item?.startDate}/>
+                                    <Input type='date' name = 'startDate' 
+                                    onChange = {(e) => handleChange(e , index)} 
+                                    defaultValue={item?.startDate}/>
                                 </div>
                                 <div>
                                     <label> End Date </label>
-                                    <Input type='date' name = 'endDate' onChange = {(e) => handleChange(e , index)} defaultValue={item?.endDate}/>
+                                    <Input type='date' name = 'endDate'
+                                    onChange = {(e) => handleChange(e , index)} 
+                                    defaultValue={item?.endDate}/>
                                 </div>
                                 <div className='col-span-2'>
                                     <label> Description </label>
-                                    <Textarea name = 'description' onChange = {(e) => handleChange(e , index)} defaultValue={item?.description}/>
+                                    <Textarea name = 'description' 
+                                    onChange = {(e) => handleChange(e , index)} 
+                                    defaultValue={item?.description}/>
                                 </div>
 
                             </div>

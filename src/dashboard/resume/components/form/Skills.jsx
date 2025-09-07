@@ -58,11 +58,8 @@ function Skills() {
     }
 
     useEffect(() => {
-        setResumeInfo({
-            ...resumeInfo,
-            skills:skillsList
-        });
-    } , [skillsList])
+        resumeInfo&&setSkillsList(resumeInfo?.skills)
+    },[])
 
   return (
     <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
@@ -74,7 +71,9 @@ function Skills() {
                 <div className='flex justify-between mb-2 border rounded-lg p-3'>
                     <div>
                         <label className='text-xs'> Name </label>
-                        <Input className= 'w-full' onChange = {(e) => handleChange(index,'name',e.target.value)} />
+                        <Input className= 'w-full' 
+                        defaultValue = {item?.name}
+                        onChange = {(e) => handleChange(index,'name',e.target.value)} />
                     </div>
                     <Rating style={{ maxWidth: 120 }} value={item.rating} 
                     onChange={(v) => handleChange(index,'rating',v)} />
