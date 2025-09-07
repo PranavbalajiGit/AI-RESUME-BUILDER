@@ -7,11 +7,12 @@ import Experience from './form/Experience';
 import Education from './form/Education';
 import Skills from './form/Skills';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import ThemeColor from './ThemeColor';
 
 function FormSection() {
 
   const [activeFormIndex , setActiveFormIndex] = useState(1);
-  const [enableNext , setEnableNext] = useState(false);
+  const [enableNext , setEnableNext] = useState(true);
   const {resumeId} = useParams();
   return (
     <div>
@@ -21,7 +22,7 @@ function FormSection() {
           <Link to={'/dashboard'}>
             <Button> <Home/> </Button>
           </Link>
-          <Button variant="outline" size = "sm" className="flex gap-2" > <LayoutGrid /> Theme</Button>
+           <ThemeColor/>
         </div>
         <div className='flex gap-2'>
           {activeFormIndex > 1 && <Button size= "sm" onClick= {() => setActiveFormIndex(activeFormIndex - 1)}> <ArrowLeft /> </Button>}
