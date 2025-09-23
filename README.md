@@ -1,3 +1,4 @@
+```bash
 ## 📝 AI Resume Builder
 
 An AI-powered Resume Builder that helps users create professional resumes tailored to their job title and experience level. The application integrates AI text generation, secure authentication, and a full-stack setup with a modern frontend and backend.
@@ -54,6 +55,7 @@ Knex
  – AI-powered text generation for resume summaries
 
 ## ⚙️ Project Structure
+
 ai-resume-builder/
 │── backend/               # Strapi backend
 │   ├── config/            # DB & API configurations
