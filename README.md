@@ -1,11 +1,10 @@
-📝 AI Resume Builder
+## 📝 AI Resume Builder
 
 An AI-powered Resume Builder that helps users create professional resumes tailored to their job title and experience level. The application integrates AI text generation, secure authentication, and a full-stack setup with a modern frontend and backend.
 
-🚀 Features
+## 🚀 Features
 
-🔑 User Authentication – Secure login and signup using Clerk
-.
+🔑 User Authentication – Secure login and signup using Clerk.
 
 🖋️ AI-Powered Resume Suggestions – Generate resume summaries and experience suggestions using Google Gemini API.
 
@@ -51,10 +50,10 @@ Knex
 
 🔹 AI Integration
 
-Google Generative AI (Gemini)
+## Google Generative AI (Gemini)
  – AI-powered text generation for resume summaries
 
-⚙️ Project Structure
+## ⚙️ Project Structure
 ai-resume-builder/
 │── backend/               # Strapi backend
 │   ├── config/            # DB & API configurations
@@ -70,7 +69,7 @@ ai-resume-builder/
 │
 └── README.md
 
-⚡ Getting Started
+## ⚡ Getting Started
 1️⃣ Clone the repo
 git clone https://github.com/your-username/ai-resume-builder.git
 cd ai-resume-builder
@@ -91,7 +90,7 @@ DATABASE_USERNAME=root
 DATABASE_PASSWORD=yourpassword
 STRAPI_API_KEY=your_strapi_api_key
 
-3️⃣ Setup Frontend (React + Vite)
+## 3️⃣ Setup Frontend (React + Vite)
 cd frontend
 npm install
 npm run dev
@@ -103,7 +102,7 @@ VITE_STRAPI_API_KEY=your_strapi_api_key
 VITE_GOOGLE_AI_API_KEY=your_gemini_api_key
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_key
 
-🔗 API Endpoints (Strapi)
+## 🔗 API Endpoints (Strapi)
 
 POST /api/user-resumes → Create new resume
 
@@ -112,7 +111,7 @@ GET /api/user-resumes?filters[userEmail][$eq]=email → Get user resumes
 PUT /api/user-resumes/:id → Update resume details
 
 
-🎯 Future Enhancements
+## 🎯 Future Enhancements
 
 Export resumes as PDF/Docx
 
