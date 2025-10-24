@@ -6,7 +6,7 @@ import { BtnBold, BtnBulletList, BtnItalic, BtnLink, BtnNumberedList, BtnStrikeT
 import { AIChatSession } from './../../../../service/AImodel';
 import { toast } from 'sonner';
 
-const PROMPT='position title: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array) , give me result in HTML tags'
+const PROMPT = 'position title: {positionTitle}, Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experience level). Give me result as HTML unordered list with <ul> and <li> tags.';
 
 function RichTextEditor({onRichTextEditorChange , index , defaultValue}) {
     const[value , setValue] = useState();
@@ -29,26 +29,18 @@ function RichTextEditor({onRichTextEditorChange , index , defaultValue}) {
             const responseText = result.response.text();
             console.log("Raw response:", responseText);
             
-            // Parse the JSON response
-            const parsedResponse = JSON.parse(responseText);
-            console.log("Parsed response:", parsedResponse);
+            const cleanedHtml = responseText
+                .replace(/```html/g, '')  // Remove markdown code blocks if any
+                .replace(/```/g, '')
+                .replace(/\n\s*/g, '')  
+                .trim();
+        
+            console.log("Final HTML:", cleanedHtml);
+            setValue(cleanedHtml);
             
-            // Extract bullet points array
-            const bulletPoints = parsedResponse.bullet_points || [];
-            console.log("Bullet points:", bulletPoints);
-            
-            // Convert array to HTML list items
-            const htmlContent = bulletPoints
-                .map(point => `<li>${point}</li>`)
-                .join('');
-            
-            // Wrap in ul tags for proper HTML structure
-            const finalHtml = `<ul>${htmlContent}</ul>`;
-            
-            console.log("Final HTML:", finalHtml);
-            setValue(finalHtml);
+            // Trigger the change handler to update resume state
+            onRichTextEditorChange({ target: { value: cleanedHtml } });
 
-            onRichTextEditorChange({ target: { value: finalHtml } });
             
         } 
         catch (error) {
