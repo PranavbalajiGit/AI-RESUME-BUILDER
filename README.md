@@ -61,7 +61,7 @@ ai-resume-builder/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/ai-resume-builder.git
+git clone https://github.com/PranavbalajiGit/ai-resume-builder.git
 cd ai-resume-builder
 ```
 
